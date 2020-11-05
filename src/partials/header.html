@@ -1,0 +1,97 @@
+<header>
+  <button
+    type="button"
+    class="menu-button is-open"
+    aria-expanded="false"
+    aria-controls="menu-container"
+    data-menu-button
+  >
+    <svg aria-label="Переключатель мобильного меню" class="menu-icon">
+      <use class="icon-menu" href="./images/sprite.svg#icon-nav-close"></use>
+      <use class="icon-close" href="./images/sprite.svg#icon-nav-menu"></use>
+    </svg>
+  </button>
+
+  <svg class="header-logo">
+    <use href="./images/sprite.svg#icon-logo"></use>
+  </svg>
+
+  <div class="menu-container" id="menu-container" data-menu>
+    <div>
+      <nav>
+        <ul class="header-navigation">
+          <li class="header-item">
+            <a
+              class="header-link"
+              onClick="window.location.reload()"
+              href="./index.html#about-us"
+              >О нас</a
+            >
+          </li>
+          <li class="header-item">
+            <a
+              class="header-link"
+              onClick="window.location.reload()"
+              href="./index.html#services-and-prices"
+              >Услуги и цены</a
+            >
+          </li>
+          <li class="header-item">
+            <a
+              class="header-link"
+              onClick="window.location.reload()"
+              href="./index.html#our-team"
+              >Мастера</a
+            >
+          </li>
+          <li class="header-item">
+            <a
+              class="header-link"
+              onClick="window.location.reload()"
+              href="./index.html#footer"
+              >Контакты</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <ul class="header-service">
+        <li>
+          <a class="header-number" href="tel:+380441111111"
+            >+38 044 111 11 11</a
+          >
+        </li>
+        <li>
+          <a
+            class="order-button header-button"
+            onClick="window.location.reload()"
+            href="./index.html#footer-form"
+          >
+            онлайн-запись
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="header-join-div">
+      <ul class="header-join-list">
+        <li class="header-join">
+          <a
+            class="header-join-item"
+            href="https://www.instagram.com/?hl=ru"
+            rel="noopener nofollow noreferrer"
+            target="_blank"
+            >Instagram</a
+          >
+        </li>
+        <li class="header-join">
+          <a
+            class="header-join-item"
+            href="https://www.youtube.com"
+            rel="noopener nofollow noreferrer"
+            target="_blank"
+            >Youtube</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

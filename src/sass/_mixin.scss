@@ -1,0 +1,105 @@
+@use "sass:math";
+@function Margin-in-row($margin, $cols) {
+  $result: $margin * ($cols - 1);
+  @return $result;
+}
+
+@mixin Cardset-Responsive-1280-768-480(
+  $ScreenWidth,
+  $Margin-right,
+  $Margin-bottom,
+  $Columns
+) {
+  $margin-in-row: Margin-in-row($Margin-right, $Columns);
+  display: flex;
+  flex-wrap: wrap;
+  @if ($ScreenWidth < 767) {
+    & > li {
+      width: calc((100% - #{$margin-in-row}) / #{$Columns});
+      &:nth-child(n) {
+        margin-right: $Margin-right;
+        margin-bottom: $Margin-bottom;
+      }
+      &:nth-child(#{$Columns}n) {
+        margin-right: 0px;
+      }
+      &:nth-last-child(-n + #{$Columns}) {
+        margin-bottom: 0px;
+      }
+    }
+  } @else {
+    @if ($ScreenWidth < 1280 and $ScreenWidth > 767) {
+      @media screen and (min-width: #{$ScreenWidth}), screen and (max-width: $ScreenWidth - 1px) and (orientation: landscape) {
+        & > li {
+          width: calc((100% - #{$margin-in-row}) / #{$Columns});
+          &:nth-child(n) {
+            margin-right: $Margin-right;
+            margin-bottom: $Margin-bottom;
+          }
+          &:nth-child(#{$Columns}n) {
+            margin-right: 0px;
+          }
+          &:nth-last-child(-n + #{$Columns}) {
+            margin-bottom: 0px;
+          }
+        }
+      }
+    } @else {
+      @media screen and (min-width: #{$ScreenWidth}) {
+        & > li {
+          width: calc((100% - #{$margin-in-row}) / #{$Columns});
+          &:nth-child(n) {
+            margin-right: $Margin-right;
+            margin-bottom: $Margin-bottom;
+          }
+          &:nth-child(#{$Columns}n) {
+            margin-right: 0px;
+          }
+          &:nth-last-child(-n + #{$Columns}) {
+            margin-bottom: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+@function Image-ratio($parent, $picture) {
+  $result: $parent / $picture;
+  @return math.floor($result);
+}
+@function Image-whitespace($parent, $picture) {
+  $result: $parent - Image-ratio($parent, $picture) * $picture;
+  @return $result;
+}
+@mixin image-width($parent-width, $picture-width) {
+  @if $picture-width == 0 or $parent-width == 0 {
+    width: 100%;
+  } @else {
+    $whitespace: Image-whitespace($parent-width, $picture-width);
+    $ratio: Image-ratio($parent-width, $picture-width);
+    width: calc((100vw - #{$whitespace}px) / #{$ratio});
+  }
+}
+
+@mixin order-button($color: $main_white, $hover: $hover_color) {
+  display: block;
+  padding: 12px 0px;
+  width: 160px;
+  border: 1px solid $hover;
+  border-radius: 25px;
+  color: $color;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  background: transparent;
+  text-align: center;
+  transition: $transition;
+  &:hover,
+  &:focus {
+    background: $hover;
+    color: $color;
+  }
+}
